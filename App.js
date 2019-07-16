@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import firebase from 'firebase';
-import {Header, Button, Spinner} from './src/components/common';
-import TabNavigator from './src/components/common/TabNavigator';
+import {Spinner, TabNavigator} from './src/components/common';
 import LoginForm from './src/components/LoginForm';
 import SignUpForm from './src/components/SignUpForm';
+import HomeScreen from './src/screen/HomeScreen';
 
 class App extends Component {
   state = { 
@@ -38,10 +38,10 @@ class App extends Component {
     switch(this.state.loggedIn) {
       case true:
           return (
-            <TabNavigator />
+            <TabNavigator/>
           );
       case false:
-          return <AppContainer />;
+          return <AppContainer/>;
       default:   
             return <Spinner size="large" />
     }
@@ -60,6 +60,7 @@ const RootStack = createStackNavigator(
   {
     Login: LoginForm,
     SignUp: SignUpForm,
+    Home: HomeScreen
   },
   {
     initialRouteName: 'Login',
