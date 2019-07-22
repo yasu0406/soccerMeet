@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { View, Text, ImageBackground } from 'react-native';
 import firebase from 'firebase';
-import { Button, Card, CardSection, Input, Spinner } from './common';
+import { Button, ButtonSection, FormContainer, Input, Spinner, InputSection } from './common';
 
 
 class LoginForm extends Component {
-    static navigationOptions = {
-        title: 'Soccer Meet',
-        headerStyle: {
-          backgroundColor: '#82C760',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-    };
     state = {
         email: '',
         password: '',
         error: '',
         loading: false
     };
-
+    static navigationOptions = {
+        header: null
+    };
     onButtonPress() {
         const { email, password } = this.state;
 
@@ -55,55 +47,90 @@ class LoginForm extends Component {
         }
 
         return (
+            <>
             <Button onPress={this.onButtonPress.bind(this)}>
-                Log in
+                Sign in
             </Button>
+            <View>
+                <Text
+                    style={{textAlign: 'center'}}
+                    onPress={() => this.props.navigation.navigate('SignUp')}
+                    >
+                    Forgot password?
+                </Text>
+                <Text
+                style={styles.signInTextStyle}
+                onPress={() => this.props.navigation.navigate('SignUp')}
+                >
+                    Sign Up
+                </Text>
+            </View>
+            </>
         );
     }
 
     render() {
         return(
-            <Card>
-                <CardSection>
+            <>
+            <ImageBackground source={require('../../assets/headerBg.png')} style={styles.bgContainerStyle} />
+            <FormContainer style={styles.containerStyle}>
+                <View style={styles.titleContainer}>
+                    <Text style={styles.titleStyle}>Soocer Meet</Text>
+                </View>
+                <InputSection>
                     <Input 
                         placeholder="user@gmail.com"
-                        label="Email"
+                        label="EMAIL ADDRESS"
                         value={this.state.email}
                         onChangeText={email => this.setState({ email })}
-                     />
-                </CardSection>    
-                <CardSection>
+                    />
+                </InputSection>
+                <InputSection>
                     <Input 
                         secureTextEntry
                         placeholder="password"
-                        label="Password"
+                        label="PASSWORD"
                         value={this.state.password}
                         onChangeText={password => this.setState({ password })}
-                     />
-                </CardSection>
-
+                    />
+                </InputSection>
                 <Text style={styles.errorTextStyle}>
                     {this.state.error}
                 </Text>
-
-                <CardSection>
+                <ButtonSection>
                     {this.renderButton()}
-                    <Button
-                    onPress={() => this.props.navigation.navigate('SignUp')}
-                    >
-                        Sign Up
-                    </Button>
-                </CardSection>
-            </Card>
+                </ButtonSection>
+            </FormContainer>
+            </>
         );
     }
 }
 
 const styles = {
+    bgContainerStyle: {
+        paddingTop: 300,
+        position: 'relative', 
+        top: -130,
+        left: 0
+    },
+    titleContainer: {
+        marginBottom: 30,
+        alignSelf: 'center'
+    },
+    titleStyle: {
+        fontSize: 36,
+        fontWeight: 'bold',
+        color: '#415D71',
+    },
     errorTextStyle: {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red'
+    },
+    signInTextStyle: {
+        marginTop: 10,
+        textAlign: 'center',
+        color:'#E9446A'
     }
 }
 
