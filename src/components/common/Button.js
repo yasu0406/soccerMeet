@@ -17,16 +17,14 @@ const styles = {
         color: 'white',
         fontSize: 16,
         fontWeight: '600',
-        paddingTop: 10,
-        paddingBottom: 10
+        paddingTop: 15,
+        paddingBottom: 15,
     },
     buttonStyle: {
-        flex: 1,
         alignSelf: 'stretch',
         backgroundColor: '#00807D',
         borderRadius: 5,
-        marginLeft: 5,
-        marginRight: 5,
+        marginBottom: 10,
     }
 }
 
