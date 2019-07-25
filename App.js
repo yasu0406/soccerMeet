@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import firebase from 'firebase';
-import {Spinner, TabNavigator} from './src/components/common';
-import LoginForm from './src/components/LoginForm';
+import {Spinner} from './src/components/common';
+import Drawer from './src/components/common/Drawer';
+import SignInForm from './src/components/SignInForm';
 import SignUpForm from './src/components/SignUpForm';
-import HomeScreen from './src/screen/HomeScreen';
+import { db } from './src/components/common/config';
 
 class App extends Component {
   state = { 
@@ -13,19 +12,7 @@ class App extends Component {
   };
 
   componentWillMount() {
-    firebase.initializeApp(
-      {
-        apiKey: 'AIzaSyDV5fbCM9_12yJObvGIQTCKLntH0PHdZjM',
-        authDomain: 'authentication-3a6af.firebaseapp.com',
-        databaseURL: 'https://authentication-3a6af.firebaseio.com',
-        projectId: 'authentication-3a6af',
-        storageBucket: '',
-        messagingSenderId: '556128285807',
-        appId: '1:556128285807:web:fabcf779d204b816'
-      }
-    );
-
-    firebase.auth().onAuthStateChanged((user) => {
+    db.auth().onAuthStateChanged((user) => {
       if(user) {
         this.setState({ loggedIn: true });
       } else {
@@ -38,7 +25,9 @@ class App extends Component {
     switch(this.state.loggedIn) {
       case true:
           return (
-            <TabNavigator/>
+            <>
+            <Drawer />
+            </>
           );
       case false:
           return <AppContainer/>;
@@ -58,12 +47,11 @@ class App extends Component {
 
 const RootStack = createStackNavigator(
   {
-    Login: LoginForm,
-    SignUp: SignUpForm,
-    Home: HomeScreen
+    SignIn: SignInForm,
+    SignUp: SignUpForm
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'SignIn',
   }
 );
 
