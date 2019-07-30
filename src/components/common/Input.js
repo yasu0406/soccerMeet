@@ -20,23 +20,19 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
 
 const styles = {
     inputlStyle:{
-        color: '#000',
+        marginTop: 5,
         paddingRight: 5,
-        paddingLeft: 5,
+        color: '#161F3D',
         fontSize: 18,
-        lineHeight: 23,
-        flex: 2
+        lineHeight: 23
     },
     labelStyle: {
-        fontSize: 18,
-        paddingLeft: 20,
-        flex: 1
+        fontSize: 12,
+        color: '#161F3D',
+        opacity: 0.3
     },
     containerStyle: {
-        height: 40,
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
+        marginTop: 10,
     }
 }
 
