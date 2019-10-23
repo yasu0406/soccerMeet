@@ -11,14 +11,25 @@ const CardSection = (props) => {
 
 const styles = {
     containerStyle: {
-        borderBottomWidth: 1,
-        padding: 5,
+        borderRadius: 5,
+        paddingTop: 20,
+        paddingLeft: 5,
+        paddingRight: 5,
+        paddingBottom: 20,
         backgroundColor: '#fff',
         justfyContent: 'flex-start',
         flexDirection: 'row',
-        borderColor: '#ddd',
-        position: 'relative'
+        borderColor: '#ccc',
+        position: 'relative',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
     }
 }
 
-export { CardSection };
+export default CardSection;
