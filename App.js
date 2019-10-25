@@ -4,7 +4,7 @@ import {Spinner} from './src/components/common';
 import Drawer from './src/components/common/Drawer';
 import SignInForm from './src/components/SignInForm';
 import SignUpForm from './src/components/SignUpForm';
-import { db } from './src/components/common/config';
+import {auth, createUserProfileDocument} from './src/firebase/firebase.util';
 
 class App extends Component {
   state = { 
@@ -12,9 +12,10 @@ class App extends Component {
   };
 
   componentWillMount() {
-    db.auth().onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => {
       if(user) {
         this.setState({ loggedIn: true });
+        createUserProfileDocument(user);
       } else {
         this.setState({ loggedIn: false });
       }
