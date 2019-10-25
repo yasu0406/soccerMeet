@@ -11,6 +11,7 @@ const CardSection = (props) => {
 
 const styles = {
     containerStyle: {
+        marginBottom: 15,
         borderRadius: 5,
         paddingTop: 20,
         paddingLeft: 5,
@@ -32,4 +33,4 @@ const styles = {
     }
 }
 
-export default CardSection;
+export {CardSection};
