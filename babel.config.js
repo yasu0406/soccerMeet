@@ -3,9 +3,6 @@ module.exports = function(api) {
   return {
     presets: ['babel-preset-expo'],
     "env": {
-      "development": {
-        "plugins": ["react-hot-loader/babel"]
-      },
       "test": {
         "plugins": [
           ["babel-plugin-webpack-alias-7", { "config": "./build_config/webpack.common.js" }],
