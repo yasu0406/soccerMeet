@@ -1,25 +1,26 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 
-const TeamMembers = ({joinMembers}) => {
-    console.log(joinMembers);
+const TeamMembers = ({joinMembers, teamMembers}) => {
     if(joinMembers) {
+        console.log(teamMembers);
         return joinMembers.map(joinMember => {
-            const {uid, name, position, profileImg} = joinMember;
-            return(
-                <View key={uid}>
-                    <Text style={{textAlign:'right'}}>20/{joinMembers.length}</Text>
-                    <View style={styles.teamMemberContainer}>
-                      <Image          
-                      style={styles.teamMemberImage}
-                      source={{uri: profileImg}} />
-                      <View style={styles.teamMemberInfo}>
-                        <Text>{name}</Text>
-                        <Text>{position}</Text>
+            return Object.values(teamMembers).filter(teamMember => teamMember.uid === joinMember).map(teamMember => {
+                const {uid, name, position, photoUrl} = teamMember;
+                return(
+                    <View key={uid}>
+                        <View style={styles.teamMemberContainer}>
+                          <Image          
+                          style={styles.teamMemberImage}
+                          source={{uri: photoUrl}} />
+                          <View style={styles.teamMemberInfo}>
+                            <Text>{name}</Text>
+                            <Text>{position}</Text>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-            );
+                );
+            })
         })
     } else {
         if(joinMembers.length === 0) {
