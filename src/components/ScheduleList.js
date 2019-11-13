@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Button, TouchableOpacity} from 'react-native';
-import {CardSection} from './common/index';
+import {CardSection, Spinner} from './common/index';
 import {getTeamsSchdule} from '../firebase/firebase.util';
 
 const ScheduleList = (props) => {
@@ -39,7 +39,7 @@ const ScheduleList = (props) => {
         </>
       )
     } else {
-      return <View><Text>Loading</Text></View>
+      return <Spinner size="small" />
     }
 }
 
