@@ -19,8 +19,8 @@ const ScheduleList = (props) => {
               return Object.values(teamSchdule).map((schedule, idx) => {
                 const {month, day, location, startTime, endTime} = schedule;
                 return(
-                  <TouchableOpacity onPress={() => props.navigate('ScheduleDetail', {name, schedule, teamMembers})}>
-                  <CardSection key={idx}>
+                  <TouchableOpacity key={idx} onPress={() => props.navigate('ScheduleDetail', {name, schedule, teamMembers})}>
+                  <CardSection>
                       <View style={styles.dateContainerStyle}>
                       <Text style={[styles.dateFontStyle, styles.dayFontStyle]}>{day}</Text>
                       <Text style={[styles.dateFontStyle, styles.monthFontStyle]}>{month}</Text>
