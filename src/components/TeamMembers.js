@@ -42,7 +42,8 @@ const TeamMembers = ({joinMembers, teamMembers}) => {
 
 const styles = {
       teamMemberContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginBottom: 10
       },
       teamMemberImage: {
         width: 50, 
@@ -52,17 +53,6 @@ const styles = {
       teamMemberInfo: {
         marginLeft: 10,
         justifyContent: 'center'
-      },
-      joinGameContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      joinGameButton: {
-        width: '100%',
-        justifyContent:'center',  
-        position: 'absolute',
-        bottom: 0
       }
     }
 
