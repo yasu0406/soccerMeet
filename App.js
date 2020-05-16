@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import {View} from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import {Spinner} from './src/components/common';
-import Drawer from './src/components/common/Drawer';
+import TabNavigator from './src/components/common/TabNavigator';
 import SignInForm from './src/components/SignInForm';
 import SignUpForm from './src/components/SignUpForm';
 import {auth, createUserProfileDocument} from './src/firebase/firebase.util';
@@ -27,7 +28,7 @@ class App extends Component {
       case true:
           return (
             <>
-            <Drawer />
+            <TabNavigator />
             </>
           );
       case false:
