@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { Text, TouchableOpacity, Image, View } from 'react-native';
+import { Text, TouchableOpacity, ScrollView, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import {auth} from '../firebase/firebase.util';
 import ScheduleDetailScreen from './ScheduleDetailScreen';
@@ -8,9 +8,9 @@ import ScheduleList from '../components/ScheduleList';
 
 const HomeScreen = (props) => {
   return(
-    <View style={styles.containerStyle}>
+    <ScrollView style={styles.containerStyle}>
       <ScheduleList navigate={props.navigation.navigate}/>
-    </View>
+    </ScrollView>
   )
 }
  
